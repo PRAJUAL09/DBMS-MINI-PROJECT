@@ -1,21 +1,32 @@
-<?php
-  $insp_id = $_POST['insp_id'];
-  $name = $_POST['name'];
-  $office_add = $_POST['office_add'];
-  $pincode=$_POST['pincode'];
-  $off_phone=$_POST['off_phone'];
-  $per_contact=$_POST['per_contact'];
- //database connection
-$dbcon = new mysqli('localhost','root','','test');
-if($dbcon->connect_error){
-  die('Connection Failed : ' .$dbcon->connect_error);
-}else{
-   $stmt = $dbcon->prepare("INSERT INTO health_inspector (insp_id,name,office_add,pincode,off_phone,per_contact) VALUES( ?, ?, ?, ?, ?, ?)");
-   $stmt->bind_param("issiii",$insp_id,$name,$office_add,$pincode,$off_phone,$per_contact);
-   $stmt->execute();
-   echo "DATA ENTERED SUCCESSFULLY ....";
-   $stmt->close();
-   $dbcon->close();
-}
+<html>
+<head>
+  <title>
+    </title>
+    <link rel="stylesheet" type="text/css" href="./insp.css">
+</head>
 
-?>
+    <body>
+
+        <div class = "inspbox">
+
+
+            <h1>Health Inspector details </h1>
+        <form action ="connect4.php" method ="post">
+
+          <p>Inspector_id:</p> <input type ="text" name="insp_id" placeholder="Inspector_id" required>
+          <p>Name:</p> <input type ="text" name="name" placeholder="Name" required>
+          <p>Office_add:</p> <input type ="text" name="office_add" placeholder="Office_add" required>
+          <p>Pincode:</p> <input type ="text" name="pincode" placeholder="Pincode" required>
+          <p>Office_phone:</p> <input type ="text" name="off_phone" placeholder="Office_phone" required>
+          <p>Personal_contact:</p> <input type ="text" name="per_contact" placeholder="Personal_contact" required>
+
+            <input type ="submit">
+
+
+       </div>
+
+
+
+    </body>
+
+</html>
